@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оберіть гру</title>
+    <style>
+        body {
+            background-image: url(https://kartinki.pics/pics/uploads/posts/2022-08/thumbs/1660002179_2-kartinkin-net-p-temnie-igrovie-oboi-krasivo-2.jpg);
+            color: rgb(255, 255, 255);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 50px;
+        }
+        #games {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .game {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #0f0;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            background-size: cover; 
+        }
+        .game:hover {
+            transform: scale(1.1);
+        }
+        @media (max-width: 600px) {
+            .game {
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <div id="games"></div>
+
+    <script>
+        $('#title').text('Оберіть гру');
+
+        var games = [
+            {name: 'Гра 1', url: 'https://robert5678.github.io/magic_ball/magic_ball.html', bg: 'https://masterpiecer-images.s3.yandex.net/351a68ec795411eea1bbf6f8c1ba65ae:upscaled'},
+            {name: 'Гра 2', url: 'https://robert5678.github.io/game-with-computer/game_with_computer.html', bg: 'https://img.freepik.com/premium-photo/beautiful-woman-and-ai-robot-look-at-each-other-concept-of-human-and-robot-war-in-future_778980-869.jpg'},
+            {name: 'Гра 3', url: 'https://robert5678.github.io/game-21/game_21', bg: 'https://img.freepik.com/premium-vector/game-cards-silhouette-of-lights-casino-symbol_153454-1603.jpg'},
+            {name: 'Гра 4', url: 'https://robert5678.github.io/LR-10/laba_10.html', bg: 'https://st4.depositphotos.com/2850905/27043/v/450/depositphotos_270436762-stock-illustration-king-slots-777-banner-casino.jpg'}
+        ];
+
+        $.each(games, function(index, game) {
+            var gameDiv = $('<div></div>')
+                .addClass('game')
+                .css('background-image', 'url(' + game.bg + ')') // добавьте эту строку
+                .text(game.name)
+                .click(function() {
+                    window.location.href = game.url;
+                });
+            $('#games').append(gameDiv);
+        });
+    </script>
+</body>
+</html>
